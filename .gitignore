@@ -1,0 +1,2 @@
+git check-ignore -v client/node_modules
+git check-ignore -v server/node_modules
