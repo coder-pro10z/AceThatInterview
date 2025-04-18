@@ -2,7 +2,42 @@
   "hash": "cc399024",
   "configHash": "22814277",
   "lockfileHash": "416bfd8d",
-  "browserHash": "477b012e",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "8018b8ea",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "cca4c3d9",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "35fcc881",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "17d5b812",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "ac335d66",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-OAZAAUMI": {
+      "file": "chunk-OAZAAUMI.js"
+    },
+    "chunk-6GAV2S6I": {
+      "file": "chunk-6GAV2S6I.js"
+    },
+    "chunk-DC5AMYBS": {
+      "file": "chunk-DC5AMYBS.js"
+    }
+  }
 }
