@@ -31,3 +31,16 @@ AceThatInterview
    └─ routes
 
 ```
+
+## 📦 Required Libraries
+
+### Frontend (Client)
+- react-router-dom
+- axios
+
+### Backend (Server)
+- express
+- mongoose
+- cors
+- dotenv
+- nodemon (dev)

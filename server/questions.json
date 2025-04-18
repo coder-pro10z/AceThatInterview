@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "question": "What is React?",
+      "topic": "react",
+      "type": "technical",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Explain event delegation in JavaScript.",
+      "topic": "javascript",
+      "type": "technical",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "question": "How do you manage state in React?",
+      "topic": "react",
+      "type": "technical",
+      "difficulty": "medium"
+    }
+  ]
+  
