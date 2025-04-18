@@ -1,30 +1,63 @@
-import OpenAI from 'openai';
 import dotenv from 'dotenv';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const getFeedback = async (req, res) => {
-  const { questions, answers } = req.body;
-
   try {
-    const feedbackResults = [];
+    const { question, answer } = req.body;
 
-    for (let i = 0; i < questions.length; i++) {
-      const prompt = `Evaluate the following answer:\n\nQuestion: ${questions[i].question}\nAnswer: ${answers[questions[i].id]}\n\nGive feedback in terms of clarity, completeness, and tone.`;
-
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.7,
-      });
-
-      feedbackResults.push(completion.choices[0].message.content);
+    // if (!question || !answer) {
+      if (!question) {
+      return res.status(400).json({ error: 'Question and answer are required' });
     }
 
-    res.json({ feedback: feedbackResults });
+    const prompt = `
+You are an interview preparation assistant. For the following technical interview question and answer, generate detailed feedback in JSON format. Include:
+
+- rating: A brief overall rating (Excellent, Good, Fair, Poor, etc.)
+- comment: Feedback on the quality and correctness of the answer.
+- suggestion: Suggestions for improvement.
+- example: (if needed) A better or more complete example answer.
+
+Format your response strictly as JSON inside a markdown code block.
+
+Question: ${question}
+Answer: ${answer}
+`;
+
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const rawContent = response.text();
+
+    // Clean and parse the JSON from markdown code block
+    const jsonString = rawContent.replace(/```json|```/g, '').trim();
+    let parsedFeedback;
+
+    try {
+      parsedFeedback = JSON.parse(jsonString);
+    } catch (error) {
+      console.error('Error parsing Gemini JSON:', error.message);
+      parsedFeedback = {
+        rating: 'Error',
+        comment: 'Could not parse the JSON response from Gemini.',
+        suggestion: 'Check if the prompt returned properly formatted JSON.',
+        example: '',
+      };
+    }
+
+    res.json({
+      question,
+      answer,
+      feedback: parsedFeedback,
+    });
+
   } catch (error) {
-    console.error("AI feedback error:", error);
-    res.status(500).json({ error: "Something went wrong with AI feedback" });
+    console.error('Gemini feedback error:', error.message);
+    res.status(500).json({ error: 'Failed to generate feedback using Gemini' });
   }
 };
