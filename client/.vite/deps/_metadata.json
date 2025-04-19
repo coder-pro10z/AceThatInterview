@@ -2,30 +2,36 @@
   "hash": "cc399024",
   "configHash": "22814277",
   "lockfileHash": "416bfd8d",
-  "browserHash": "8018b8ea",
+  "browserHash": "d9903ea3",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "cca4c3d9",
+      "fileHash": "4d736e20",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "35fcc881",
+      "fileHash": "10479ccb",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.mjs",
       "file": "react-router-dom.js",
-      "fileHash": "17d5b812",
+      "fileHash": "e22ef936",
       "needsInterop": false
     },
     "axios": {
       "src": "../../node_modules/axios/index.js",
       "file": "axios.js",
-      "fileHash": "ac335d66",
+      "fileHash": "d87d8c14",
+      "needsInterop": false
+    },
+    "openai": {
+      "src": "../../node_modules/openai/index.mjs",
+      "file": "openai.js",
+      "fileHash": "f7ce6cbd",
       "needsInterop": false
     }
   },
