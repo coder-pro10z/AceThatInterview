@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { saveFeedback } from '../utils/historyStorage.js';
+
 
 dotenv.config();
 
@@ -49,6 +51,15 @@ Answer: ${answer}
         example: '',
       };
     }
+
+    const feedbackEntry = {
+      question,
+      answer,
+      feedback: parsedFeedback,
+      timestamp: new Date(),
+    };
+
+    await saveFeedback(feedbackEntry, req.useDb);
 
     res.json({
       question,

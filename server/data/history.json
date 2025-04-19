@@ -1,0 +1,68 @@
+[
+  {
+    "question": "What is React?",
+    "answer": "REACT ",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is extremely brief and lacks any substantive information about React. It simply restates the question. This demonstrates a lack of understanding of the fundamental concepts of React.",
+      "suggestion": "The answer should explain what React is in more detail, including its purpose, core features, and how it's used. Focus on describing React as a JavaScript library for building user interfaces, its component-based architecture, and its use of a virtual DOM.",
+      "example": "React is a JavaScript library for building user interfaces, particularly single-page applications where the UI is dynamically updated. It follows a component-based architecture, meaning UIs are broken down into reusable, independent pieces called components. React uses a virtual DOM to optimize updates, efficiently re-rendering only the parts of the UI that have changed. This allows for faster and more responsive user experiences. Key features include JSX (a syntax extension to JavaScript), component lifecycle methods, and state management."
+    },
+    "timestamp": "2025-04-19T08:20:10.842Z"
+  },
+  {
+    "question": "What is React?",
+    "answer": "REACT ",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is technically correct, but extremely insufficient. It only states the name of the framework and provides no explanation of what it is, its purpose, or its key characteristics. This demonstrates a significant lack of understanding.",
+      "suggestion": "A good answer should explain that React is a JavaScript library for building user interfaces (UIs) and UI components. It should also mention its declarative nature, component-based architecture, and its use of a virtual DOM for efficient updates. Consider discussing its ecosystem (e.g., Redux, React Router) or its popularity and use cases.",
+      "example": "React is a JavaScript library developed and maintained by Facebook (now Meta) for building user interfaces, particularly single-page applications where content is dynamically updated.  It follows a component-based architecture, allowing developers to create reusable UI elements. React employs a virtual DOM to efficiently update the actual DOM, improving performance. Its declarative approach makes code more predictable and easier to maintain. It is often used in conjunction with state management libraries like Redux or routing libraries like React Router."
+    },
+    "timestamp": "2025-04-19T08:20:10.851Z"
+  },
+  {
+    "question": "How do you manage state in React?",
+    "answer": "useState hook",
+    "feedback": {
+      "rating": "Fair",
+      "comment": "The answer is technically correct but lacks depth and detail. While `useState` is a fundamental way to manage state in React, it's not the *only* way, and the answer doesn't demonstrate a comprehensive understanding of state management options.",
+      "suggestion": "Expand on the answer by mentioning different types of state (local vs. global) and other state management techniques like `useReducer`, Context API, or external libraries like Redux or Zustand. Discuss the pros and cons of different approaches based on the scale and complexity of the application.",
+      "example": "In React, state management can be handled in several ways depending on the scope. For local state within a component, the `useState` hook is a simple and effective solution. For example, `const [count, setCount] = useState(0)`. However, when dealing with shared state across multiple components or in a larger application, options like the Context API, the `useReducer` hook, or external libraries like Redux or Zustand become more suitable. Context API is good for prop drilling issues but can lead to re-renders. `useReducer` is suitable for complex state logic. Redux and Zustand offer more robust solutions for managing global application state, providing predictable state updates and efficient re-rendering. The choice depends on the application's complexity and scalability requirements."
+    },
+    "timestamp": "2025-04-19T08:20:10.886Z"
+  },
+  {
+    "question": "Explain event delegation in JavaScript.",
+    "answer": "parent to child",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is extremely brief and only hints at the concept of event delegation. It doesn't explain what event delegation is, why it's useful, or how it works. The phrase 'parent to child' is tangentially related but insufficient as an explanation.",
+      "suggestion": "The answer needs to define event delegation, explain the bubbling phase of event propagation, describe the benefits (e.g., memory efficiency and dynamic element handling), and potentially include a simple code example.",
+      "example": "Event delegation is a technique in JavaScript where you attach a single event listener to a parent element, rather than adding event listeners to multiple child elements. When an event occurs on a child element, it 'bubbles up' the DOM tree to the parent element. The parent element's event listener then handles the event. This is more efficient than attaching individual event listeners to each child because it reduces memory consumption, especially when dealing with a large number of child elements or dynamically added elements. For example, consider a list where new items are added frequently. With event delegation, you only need to attach a click listener to the `<ul>` element, rather than attaching click listeners to each `<li>` element every time a new one is added."
+    },
+    "timestamp": "2025-04-19T08:20:22.830Z"
+  },
+  {
+    "question": "How do you manage state in React?",
+    "answer": "useState hook",
+    "feedback": {
+      "rating": "Fair",
+      "comment": "The answer is technically correct in that `useState` is *a* way to manage state in React, but it's a very incomplete answer. It demonstrates a basic understanding but lacks depth and doesn't showcase broader knowledge of state management strategies. It doesn't differentiate between local and global state management and misses opportunities to discuss other options.",
+      "suggestion": "Expand the answer to include a discussion of different state management scenarios and techniques. Mention local state (component-level) vs. global state (application-level) and alternative approaches like `useReducer`, Context API, or external libraries like Redux or Zustand. Discuss trade-offs between these approaches.",
+      "example": "A more comprehensive answer might be: \"React offers several ways to manage state, depending on the scope and complexity of the application. For component-level or local state, the `useState` hook is the most common and simplest approach. It allows you to declare a state variable and a function to update it within a functional component. For more complex state logic within a component, `useReducer` can be a better choice, as it allows you to manage state transitions using a reducer function, similar to Redux. When state needs to be shared across multiple components, especially without prop drilling, React's Context API provides a mechanism for global state management within a limited scope. For larger applications with complex state requirements and predictable state updates, external libraries like Redux or Zustand are often used. These libraries offer more structured approaches with concepts like actions, reducers, and stores, promoting maintainability and testability. The choice of state management solution depends on factors like the application's size, complexity, and the need for shared state and predictable state transitions.\""
+    },
+    "timestamp": "2025-04-19T08:20:22.840Z"
+  },
+  {
+    "question": "Explain event delegation in JavaScript.",
+    "answer": "parent to child",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer provided is highly insufficient and does not demonstrate understanding of event delegation. 'Parent to child' hints at a hierarchical relationship, but doesn't explain the *what*, *why*, or *how* of event delegation. It completely misses the core concept of listening for events on a parent element instead of multiple child elements, and the benefits this provides.",
+      "suggestion": "The answer needs to explain: (1) What event delegation is: the mechanism of listening for events on a parent element instead of individual child elements. (2) How it works: the event bubbles up the DOM tree to the parent element, and the parent element's event listener checks the event target to determine if it originated from a relevant child element. (3) Why it's useful: improved performance (especially when dealing with a large number of child elements or dynamically added children) and simplified event management.",
+      "example": "Event delegation is a technique in JavaScript where, instead of attaching event listeners to individual child elements, you attach a single event listener to a parent element. When an event occurs on a child element, it 'bubbles up' the DOM tree to the parent. The parent's event listener can then determine if the event originated from a child element of interest and execute the appropriate code. This is beneficial because it reduces the number of event listeners needed, which can improve performance, especially when dealing with a large number of child elements or dynamically added elements.  For example, if you have a list with many list items, instead of attaching a click listener to each list item, you can attach a single click listener to the `<ul>` element.  When a list item is clicked, the click event bubbles up to the `<ul>`, and you can use `event.target` to determine which list item was clicked."
+    },
+    "timestamp": "2025-04-19T08:20:22.924Z"
+  }
+]
