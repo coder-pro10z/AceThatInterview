@@ -1,4 +1,4 @@
-import FeedbackModel from '../models/feedback.js';
+import FeedbackModel from '../models/Feedback.js';
 
 const useDb = process.env.USE_DB === 'true';
 

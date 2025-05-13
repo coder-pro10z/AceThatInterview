@@ -312,5 +312,38 @@
       "example": "State management in React can be approached in several ways, depending on the complexity and scope of the application. For local state, the `useState` hook is a common and effective choice for managing simple, component-specific data. For more complex state logic, the `useReducer` hook offers a way to manage state transitions in a predictable manner, similar to Redux but within a single component. When sharing state between multiple components, especially deeply nested ones, `useContext` provides a way to avoid prop drilling. For larger applications with global state requirements, libraries like Redux, Zustand, or Recoil offer more robust solutions with features like centralized state, middleware for handling side effects, and optimized re-renders. The choice of which approach to use depends on factors like the size of the application, the complexity of the state logic, and the need for shared state between components. For instance, if you have many components that need to read and write the same piece of data, a global state management solution would likely be a better choice than prop drilling with context. Each approach has its trade-offs in terms of boilerplate code and learning curve, which should also be considered."
     },
     "timestamp": "2025-04-19T18:19:28.509Z"
+  },
+  {
+    "question": "What is React?",
+    "answer": "library",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is extremely brief and lacks crucial details. While technically correct that React is a library, this provides almost no information about what React does or its purpose. It doesn't demonstrate any understanding of the framework.",
+      "suggestion": "The answer should explain what React is, what it is used for, what its key features are, and why it's useful. A good answer should demonstrate a basic understanding of React's core concepts, such as its component-based architecture and virtual DOM.",
+      "example": "React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components, manage state efficiently using a virtual DOM, and build complex UIs in a declarative and maintainable way. Key features include JSX, component-based architecture, unidirectional data flow, and a strong focus on performance."
+    },
+    "timestamp": "2025-05-13T18:32:38.657Z"
+  },
+  {
+    "question": "Explain event delegation in JavaScript.",
+    "answer": "dont know",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The candidate's response indicates a complete lack of understanding of event delegation. Simply stating \"don't know\" is unacceptable in a technical interview. It shows no effort to explain related concepts or make an educated guess.",
+      "suggestion": "The candidate should study event delegation thoroughly. This includes understanding the event bubbling phase, target vs currentTarget, and the benefits of event delegation in terms of performance and maintainability. Before admitting a complete lack of knowledge, try to explain what you do know related to the topic, even if it's just the basic event flow in the DOM.",
+      "example": "Event delegation is a technique in JavaScript where instead of attaching event listeners to individual elements, you attach a single event listener to a parent element. When an event occurs on a child element, it bubbles up the DOM tree to the parent. The parent's event listener can then determine which child element triggered the event and handle it accordingly. This is more efficient, especially with large lists, because you're not attaching listeners to every item. For example:\n\njavascript\n<ul id=\"myList\">\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ul>\n\n<script>\n  document.getElementById('myList').addEventListener('click', function(event) {\n    if (event.target.tagName === 'LI') {\n      console.log('Clicked on: ' + event.target.textContent);\n    }\n  });\n</script>\n\n\nIn this example, only one event listener is attached to the `<ul>` element. When a `<li>` element is clicked, the event bubbles up to the `<ul>`, and the event listener checks if the target of the event is an `<li>` element. If so, it logs the text content of the clicked list item."
+    },
+    "timestamp": "2025-05-13T18:32:50.002Z"
+  },
+  {
+    "question": "How do you manage state in React?",
+    "answer": "redux ",
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is technically correct in that Redux *is* a state management solution, but it's a very incomplete and insufficient response to the question. It demonstrates a lack of understanding of the breadth of state management options and provides no detail on *how* Redux manages state, its pros and cons, or when it's appropriate to use. It also doesn't address other common state management patterns available directly in React.",
+      "suggestion": "A better answer should discuss different types of state management, including local component state (using `useState`), Context API, and external state management libraries like Redux, Zustand, or Recoil. It should also explain the trade-offs between these approaches and when one might be more suitable than another. A comprehensive answer should also explain the core concepts of Redux.",
+      "example": "There are several ways to manage state in React. The simplest is using the `useState` hook for local component state. For more complex applications, React's Context API can be used to share state between components without prop drilling. For larger applications with complex state requirements, external libraries like Redux, Zustand, or Recoil are often used. Redux, for example, uses a single, immutable store to hold the application state. Actions are dispatched to trigger reducers, which update the store. Selectors are then used to extract data from the store for use in components. Redux is powerful but can be complex, so it's often best reserved for situations where local state or Context are insufficient. Zustand is a more lightweight alternative to Redux that's easier to set up and use. Recoil offers a different approach, using atoms and selectors to manage state as a graph of dependencies. Choosing the right state management solution depends on the size and complexity of the application and the specific needs of the project."
+    },
+    "timestamp": "2025-05-13T18:33:05.172Z"
   }
 ]
