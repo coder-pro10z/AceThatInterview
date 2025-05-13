@@ -1,1 +1,1 @@
-@import "tailwindcss";
+import 'antd/dist/antd.min.css'; // Add this line
