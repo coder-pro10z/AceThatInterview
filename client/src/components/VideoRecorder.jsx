@@ -315,33 +315,75 @@ export default function VideoRecorder({ onComplete }) {
   }, [chunks, onComplete]);
 
   return (
-    <div>
-      {/* Always‑on live preview */}
-      <Webcam
-        audio
-        ref={webcamRef}
-        mirrored
-        videoConstraints={{ facingMode: 'user' }}
-        style={{ width: '100%', borderRadius: 8, background: '#000' }}
-      />
+//     <div>
+//       {/* Always‑on live preview */}
+//       <Webcam
+//         audio
+//         ref={webcamRef}
+//         mirrored
+//         videoConstraints={{ facingMode: 'user' }}
+//         style={{ width: '80%',height: 'auto',
+//  borderRadius: 8, background: '#000' }}
+//       />
 
-      <Space style={{ marginTop: 12 }}>
-        <Button type="primary" onClick={startRecording} disabled={recording}>
-          Start
-        </Button>
-        <Button danger onClick={stopRecording} disabled={!recording}>
-          Stop
-        </Button>
-      </Space>
+//       <Space style={{ marginTop: 12 }}>
+//         <Button type="primary" onClick={startRecording} disabled={recording}>
+//           Start
+//         </Button>
+//         <Button danger onClick={stopRecording} disabled={!recording}>
+//           Stop
+//         </Button>
+//       </Space>
 
-      {/* Playback of recorded clip */}
-      {videoUrl && (
-        <video
-          src={videoUrl}
-          controls
-          style={{ width: '100%', marginTop: 16, borderRadius: 8 }}
-        />
-      )}
-    </div>
+//       {/* Playback of recorded clip */}
+//       {videoUrl && (
+//         <video
+//           src={videoUrl}
+//           controls
+//           style={{ width: '100%', marginTop: 16, borderRadius: 8 }}
+//         />
+//       )}
+//     </div>
+
+<div style={{ textAlign: 'center' }}>
+  {/* Webcam Preview with reduced size */}
+  <Webcam
+    audio
+    ref={webcamRef}
+    mirrored
+    videoConstraints={{ facingMode: 'user' }}
+    style={{
+      width: '480px',  // reduce size here
+      borderRadius: 8,
+      background: '#000',
+    }}
+  />
+
+  {/* Centered Buttons on new line */}
+  <div style={{ marginTop: 12 }}>
+    <Space>
+      <Button type="primary" onClick={startRecording} disabled={recording}>
+        Start
+      </Button>
+      <Button danger onClick={stopRecording} disabled={!recording}>
+        Stop
+      </Button>
+    </Space>
+  </div>
+
+  {/* Playback video */}
+  {/* {videoUrl && (
+    <video
+      src={videoUrl}
+      controls
+      style={{
+        width: '280px',
+        marginTop: 16,
+        borderRadius: 8,
+      }}
+    />
+  )} */}
+</div>
+
   );
 }

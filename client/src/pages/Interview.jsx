@@ -707,13 +707,196 @@
 
 // }
 
-import React, { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Row, Col, Card, Progress, Space, Button, Typography, Spin, message, Input } from 'antd';
-import axios from 'axios';
+// {
 
-const { TextArea } = Input;
-const { Text } = Typography;
+
+// import React, { useEffect, useRef, useState } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import { Row, Col, Card, Progress, Space, Button, Typography, Spin, message, Input } from 'antd';
+// import axios from 'axios';
+
+// const { TextArea } = Input;
+// const { Text } = Typography;
+
+// export default function Interview() {
+//   const { state } = useLocation();
+//   const navigate = useNavigate();
+//   const { interviewDetails = {}, useDb } = state || {};
+
+//   const [questions, setQuestions] = useState([]);
+//   const [answers, setAnswers] = useState({});
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [loadingQ, setLoadingQ] = useState(true);
+//   const [transcript, setTranscript] = useState('');
+//   const [listening, setListening] = useState(false);
+
+//   const recognitionRef = useRef(null);
+
+//   useEffect(() => {
+//     const { questionType, techTopics } = interviewDetails;
+//     let params = [];
+//     if (questionType) params.push(`type=${questionType}`);
+//     if (techTopics?.length) params.push(`topic=${techTopics.join(',')}`);
+//     params.push(`limit=${techTopics?.length || 5}`);
+//     const query = params.join('&');
+
+//     axios
+//       .get(`http://localhost:5000/api/questions?${query}`)
+//       .then(res => {
+//         setQuestions(res.data);
+//       })
+//       .catch(() => {
+//         message.error('Failed to load questions');
+//       })
+//       .finally(() => setLoadingQ(false));
+//   }, [interviewDetails]);
+
+//   useEffect(() => {
+//     if (!loadingQ && questions.length > 0 && currentIndex >= questions.length) {
+//       navigate('/summary', { state: { questions, answers, interviewDetails, useDb } });
+//     }
+//   }, [loadingQ, questions, currentIndex, answers, navigate, interviewDetails, useDb]);
+
+//   useEffect(() => {
+//     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+//     if (!SpeechRecognition) {
+//       message.error('Speech recognition not supported in this browser.');
+//       return;
+//     }
+
+//     recognitionRef.current = new SpeechRecognition();
+//     recognitionRef.current.continuous = false;
+//     recognitionRef.current.interimResults = false;
+//     recognitionRef.current.lang = 'en-US';
+
+//     recognitionRef.current.onstart = () => {
+//       setListening(true);
+//       message.info('Listening...');
+//     };
+
+//     recognitionRef.current.onend = () => {
+//       setListening(false);
+//       message.success('Stopped listening.');
+//     };
+
+//     // recognitionRef.current.onresult = event => {
+//     //   const speechResult = event.results[0][0].transcript;
+//     //   setTranscript(speechResult);
+//     //   setAnswers(prev => ({ ...prev, [questions[currentIndex]?.id]: speechResult }));
+//     // };
+
+//     recognitionRef.current.onresult = (event) => {
+//       const speechResult = event.results[0][0].transcript;
+//       setTranscript(speechResult); // optional display
+//       setAnswers((prev) => ({
+//         ...prev,
+//         [questions[currentIndex].id]: speechResult,
+//       }));
+//     };
+
+//     recognitionRef.current.onerror = event => {
+//       message.error(`Error: ${event.error}`);
+//     };
+//   }, [questions, currentIndex]);
+
+//   const startListening = () => recognitionRef.current.start();
+
+//   if (loadingQ)
+//     return <div style={{ textAlign: 'center', marginTop: 100 }}><Spin size="large" /></div>;
+
+//   if (!questions.length)
+//     return (
+//       <div style={{ textAlign: 'center', marginTop: 100 }}>
+//         <Typography.Title level={3}>No questions available</Typography.Title>
+//         <Button onClick={() => navigate(-1)}>Back to setup</Button>
+//       </div>
+//     );
+
+//   // const question = questions[currentIndex];
+//   const question = questions[currentIndex] || {};
+// if (currentIndex >= questions.length) return null;
+
+
+//   return (
+//     <div style={{ padding: 24, maxWidth: 960, margin: 'auto' }}>
+//       <Progress
+//         percent={((currentIndex + 1) / questions.length) * 100}
+//         format={() => `Question ${currentIndex + 1} of ${questions.length}`}
+//       />
+
+//       <Row gutter={16} style={{ marginTop: 24 }}>
+//         <Col span={12}>
+//           <Card title={question.question} bordered>
+//             <Text type="secondary">
+//               Topic: {question.topic} • Difficulty: {question.difficulty}
+//             </Text>
+//           </Card>
+//         </Col>
+
+//         <Col span={12}>
+//           <Card title="Record Your Answer" bordered>
+//             <Space direction="vertical" style={{ width: '100%' }}>
+//               <Button onClick={startListening} disabled={listening} type="primary">
+//                 {listening ? 'Listening...' : 'Start Recording'}
+//               </Button>
+//               {/* <TextArea
+//                 value={transcript}
+//                 placeholder="Your answer will appear here..."
+//                 rows={5}
+//               /> */}
+//               <TextArea
+//                 value={answers[question.id] || ''}
+//                 placeholder="Type your answer or use voice input..."
+//                 rows={5}
+//                 onChange={(e) =>
+//                   setAnswers((prev) => ({
+//                     ...prev,
+//                     [question.id]: e.target.value,
+//                   }))
+//                 }
+//               />
+
+
+//             </Space>
+//           </Card>
+//         </Col>
+//       </Row>
+
+//       <Space style={{ marginTop: 24, float: 'right' }}>
+//         <Button
+//           onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
+//           disabled={currentIndex === 0}
+//         >
+//           Prev
+//         </Button>
+//         <Button
+//           type="primary"
+//           onClick={() => {
+//             setTranscript('');
+//             setCurrentIndex(i => i + 1);
+//           }}
+//           disabled={!answers[question.id]}
+//         >
+//           {currentIndex < questions.length - 1 ? 'Next' : 'Finish'}
+//         </Button>
+//       </Space>
+//     </div>
+//   );
+// }
+
+// }
+
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Spin, message } from 'antd';
+import Header from '../components/Header';
+import QuestionPanel from '../components/QuestionPanel';
+import AnswerInput from '../components/AnswerInput';
+import VoiceInput from '../components/VoiceInput';
+import ActionButtons from '../components/ActionButtons';
+import UserWebcam from '../components/UserWebcam';
+import axios from 'axios';
 
 export default function Interview() {
   const { state } = useLocation();
@@ -723,161 +906,115 @@ export default function Interview() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loadingQ, setLoadingQ] = useState(true);
-  const [transcript, setTranscript] = useState('');
-  const [listening, setListening] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showHint, setShowHint] = useState(false);
+const [transcript, setTranscript] = useState('');
 
-  const recognitionRef = useRef(null);
 
   useEffect(() => {
-    const { questionType, techTopics } = interviewDetails;
-    let params = [];
-    if (questionType) params.push(`type=${questionType}`);
-    if (techTopics?.length) params.push(`topic=${techTopics.join(',')}`);
-    params.push(`limit=${techTopics?.length || 5}`);
-    const query = params.join('&');
+    const fetchQuestions = async () => {
+      const { questionType, techTopics } = interviewDetails;
+      let query = [];
+      if (questionType) query.push(`type=${questionType}`);
+      if (techTopics?.length) query.push(`topic=${techTopics.join(',')}`);
+      query.push(`limit=${techTopics?.length || 5}`);
 
-    axios
-      .get(`http://localhost:5000/api/questions?${query}`)
-      .then(res => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/questions?${query.join('&')}`);
         setQuestions(res.data);
-      })
-      .catch(() => {
+      } catch (err) {
         message.error('Failed to load questions');
-      })
-      .finally(() => setLoadingQ(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
   }, [interviewDetails]);
 
   useEffect(() => {
-    if (!loadingQ && questions.length > 0 && currentIndex >= questions.length) {
+    if (!loading && questions.length > 0 && currentIndex >= questions.length) {
       navigate('/summary', { state: { questions, answers, interviewDetails, useDb } });
     }
-  }, [loadingQ, questions, currentIndex, answers, navigate, interviewDetails, useDb]);
+  }, [currentIndex, questions.length, loading]);
 
-  useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (loading) return <Spin size="large" style={{ marginTop: 100 }} />;
 
-    if (!SpeechRecognition) {
-      message.error('Speech recognition not supported in this browser.');
-      return;
-    }
-
-    recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.continuous = false;
-    recognitionRef.current.interimResults = false;
-    recognitionRef.current.lang = 'en-US';
-
-    recognitionRef.current.onstart = () => {
-      setListening(true);
-      message.info('Listening...');
-    };
-
-    recognitionRef.current.onend = () => {
-      setListening(false);
-      message.success('Stopped listening.');
-    };
-
-    // recognitionRef.current.onresult = event => {
-    //   const speechResult = event.results[0][0].transcript;
-    //   setTranscript(speechResult);
-    //   setAnswers(prev => ({ ...prev, [questions[currentIndex]?.id]: speechResult }));
-    // };
-
-    recognitionRef.current.onresult = (event) => {
-      const speechResult = event.results[0][0].transcript;
-      setTranscript(speechResult); // optional display
-      setAnswers((prev) => ({
-        ...prev,
-        [questions[currentIndex].id]: speechResult,
-      }));
-    };
-
-    recognitionRef.current.onerror = event => {
-      message.error(`Error: ${event.error}`);
-    };
-  }, [questions, currentIndex]);
-
-  const startListening = () => recognitionRef.current.start();
-
-  if (loadingQ)
-    return <div style={{ textAlign: 'center', marginTop: 100 }}><Spin size="large" /></div>;
-
-  if (!questions.length)
-    return (
-      <div style={{ textAlign: 'center', marginTop: 100 }}>
-        <Typography.Title level={3}>No questions available</Typography.Title>
-        <Button onClick={() => navigate(-1)}>Back to setup</Button>
-      </div>
-    );
-
-  // const question = questions[currentIndex];
   const question = questions[currentIndex] || {};
-if (currentIndex >= questions.length) return null;
-
 
   return (
     <div style={{ padding: 24, maxWidth: 960, margin: 'auto' }}>
-      <Progress
-        percent={((currentIndex + 1) / questions.length) * 100}
-        format={() => `Question ${currentIndex + 1} of ${questions.length}`}
+      <Header current={currentIndex + 1} total={questions.length} />
+
+      {/* <QuestionPanel question={question} />
+       */}
+
+      <QuestionPanel question={question} showHint={showHint} />
+      <UserWebcam
+        onComplete={(videoUrl, blob) =>
+          setAnswers((prev) => ({
+            ...prev,
+            [question.id]: {
+              ...prev[question.id],
+              videoUrl,
+              blob,
+            },
+          }))
+        }
       />
 
-      <Row gutter={16} style={{ marginTop: 24 }}>
-        <Col span={12}>
-          <Card title={question.question} bordered>
-            <Text type="secondary">
-              Topic: {question.topic} • Difficulty: {question.difficulty}
-            </Text>
-          </Card>
-        </Col>
+      <VoiceInput
+        onResult={(text) =>
+          setAnswers((prev) => ({
+            ...prev,
+            [question.id]: {
+              ...prev[question.id],
+              text,
+            },
+          }))
+        }
+      />
 
-        <Col span={12}>
-          <Card title="Record Your Answer" bordered>
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Button onClick={startListening} disabled={listening} type="primary">
-                {listening ? 'Listening...' : 'Start Recording'}
-              </Button>
-              {/* <TextArea
-                value={transcript}
-                placeholder="Your answer will appear here..."
-                rows={5}
-              /> */}
-              <TextArea
-                value={answers[question.id] || ''}
-                placeholder="Type your answer or use voice input..."
-                rows={5}
-                onChange={(e) =>
-                  setAnswers((prev) => ({
-                    ...prev,
-                    [question.id]: e.target.value,
-                  }))
-                }
-              />
+      <AnswerInput
+        value={answers[question.id]?.text || ''}
+        onChange={(val) =>
+          setAnswers((prev) => ({
+            ...prev,
+            [question.id]: {
+              ...prev[question.id],
+              text: val,
+            },
+          }))
+        }
+      />
 
+    <ActionButtons
+  currentIndex={currentIndex}
+  total={questions.length}
+  canProceed={
+    !!answers[question.id]?.text || answers[question.id]?.skipped
+  }
+  onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
+  onNext={() => {
+    setTranscript('');
+    setShowHint(false);
+    setCurrentIndex((i) => i + 1);
+  }}
+  onSkip={() => {
+    setAnswers((prev) => ({
+      ...prev,
+      [question.id]: { text: '', skipped: true },
+    }));
+    setTranscript('');
+    setShowHint(false);
+    setCurrentIndex((i) => i + 1);
+  }}
+  showHint={showHint}
+  toggleHint={() => setShowHint((prev) => !prev)}
+/>
 
-            </Space>
-          </Card>
-        </Col>
-      </Row>
-
-      <Space style={{ marginTop: 24, float: 'right' }}>
-        <Button
-          onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
-          disabled={currentIndex === 0}
-        >
-          Prev
-        </Button>
-        <Button
-          type="primary"
-          onClick={() => {
-            setTranscript('');
-            setCurrentIndex(i => i + 1);
-          }}
-          disabled={!answers[question.id]}
-        >
-          {currentIndex < questions.length - 1 ? 'Next' : 'Finish'}
-        </Button>
-      </Space>
     </div>
   );
 }
+// This component structure allows for better separation of concerns and easier testing.
+// Each part of the interview process (header, question display, webcam, voice input, answer input, and action buttons) is modularized.

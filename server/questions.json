@@ -1,24 +1,26 @@
 [
-    {
-      "id": 1,
-      "question": "What is React?",
-      "topic": "react",
-      "type": "technical",
-      "difficulty": "easy"
-    },
-    {
-      "id": 2,
-      "question": "Explain event delegation in JavaScript.",
-      "topic": "javascript",
-      "type": "technical",
-      "difficulty": "medium"
-    },
-    {
-      "id": 3,
-      "question": "How do you manage state in React?",
-      "topic": "react",
-      "type": "technical",
-      "difficulty": "medium"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "question": "What is React?",
+    "topic": "react",
+    "type": "technical",
+    "difficulty": "easy",
+    "hint": "Think about reusable UI components and a virtual DOM."
+  },
+  {
+    "id": 2,
+    "question": "Explain event delegation in JavaScript.",
+    "topic": "javascript",
+    "type": "technical",
+    "difficulty": "medium",
+    "hint": "Consider how events bubble up and how listeners can be attached to parent elements."
+  },
+  {
+    "id": 3,
+    "question": "How do you manage state in React?",
+    "topic": "react",
+    "type": "technical",
+    "difficulty": "medium",
+    "hint": "Think about hooks like useState and useReducer, and external tools like Redux or Context API."
+  }
+]

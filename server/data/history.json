@@ -514,5 +514,66 @@
       "example": "React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and manage application state efficiently. React uses a component-based architecture and a declarative programming style, making it easier to reason about and maintain complex UIs. It also utilizes a virtual DOM to optimize updates and improve performance."
     },
     "timestamp": "2025-05-30T13:49:29.591Z"
+  },
+  {
+    "question": "What is React?",
+    "answer": {
+      "text": "react with JavaScript library"
+    },
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer '[object Object]' is not a valid or meaningful answer to the question 'What is React?'. It indicates that an object was likely unintentionally stringified without proper conversion. This response demonstrates a lack of understanding of the fundamental concept of React.",
+      "suggestion": "The candidate needs to provide a clear and concise definition of React, covering its purpose and core functionalities. The answer should include that React is a JavaScript library for building user interfaces and highlight components, virtual DOM, and declarative programming.",
+      "example": "React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components, making it easier to manage and update complex applications. React uses a virtual DOM, which improves performance by minimizing direct manipulations to the actual DOM. It promotes a declarative style of programming, where you describe what you want the UI to look like based on the current state, and React handles the DOM updates."
+    },
+    "timestamp": "2025-06-02T16:51:10.532Z"
+  },
+  {
+    "question": "What is React?",
+    "answer": {
+      "text": "react with JavaScript library with reusable components"
+    },
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer is '[object Object]' which indicates that the candidate did not provide a meaningful response. This suggests a lack of understanding of React or an inability to articulate its basic concepts. The 'object Object' string typically arises when attempting to convert an object directly to a string without specifying how to represent it.",
+      "suggestion": "The candidate needs to study and practice articulating the fundamental concepts of React. A good answer would explain what React is, its purpose, and some of its core features and benefits.",
+      "example": "React is a JavaScript library for building user interfaces. It enables developers to create reusable UI components and efficiently update them in response to data changes. React uses a virtual DOM to minimize direct manipulations to the real DOM, leading to performance improvements. Key features include component-based architecture, declarative programming, JSX, and unidirectional data flow. It's often used for building single-page applications (SPAs) and complex interactive UIs."
+    },
+    "timestamp": "2025-06-02T17:43:11.815Z"
+  },
+  {
+    "question": "What is React?",
+    "answer": {
+      "text": "react with JavaScript library with reusable components"
+    },
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The answer \"[object Object]\" is not a valid response to the question \"What is React?\". It indicates a problem with the way the answer was being presented or perhaps an unhandled error. The answer provides no actual information about React.",
+      "suggestion": "This needs a complete re-answer. The candidate should define what React is, highlight its key features, and explain its purpose. They should also mention the core concepts of React like components, JSX, virtual DOM, and state management.",
+      "example": "React is a JavaScript library for building user interfaces. It's declarative, efficient, and flexible. React allows developers to compose complex UIs from small and isolated pieces of code called components. React uses a virtual DOM which allows for efficient updating of the UI. It supports JSX, a syntax extension to JavaScript that allows HTML-like syntax in JavaScript files. React is primarily used for building single-page applications but can also be integrated into existing applications."
+    },
+    "timestamp": "2025-06-02T17:43:11.957Z"
+  },
+  {
+    "question": "Explain event delegation in JavaScript.",
+    "answer": {
+      "text": "managing the child using its parent elements"
+    },
+    "feedback": {
+      "rating": "Poor",
+      "comment": "The provided answer is simply '[object Object]', which indicates that no explanation of event delegation was given. This is not a valid or useful answer. It shows a complete lack of understanding of the concept.",
+      "suggestion": "The candidate should thoroughly learn the concept of event delegation, including its purpose, how it works, and its advantages. They should be able to explain it in clear and concise terms and provide a code example to illustrate the principle.",
+      "example": {
+        "explanation": "Event delegation is a technique in JavaScript where you attach a single event listener to a parent element, instead of attaching individual listeners to multiple child elements. When an event occurs on a child element, it bubbles up the DOM tree to the parent. The parent element's event listener can then determine which child element triggered the event and handle it accordingly.",
+        "advantages": [
+          "Improved performance: Fewer event listeners are attached to the DOM, reducing memory usage and improving performance.",
+          "Simplified code: Easier to manage event handling logic, especially when dealing with dynamically added or removed elements.",
+          "Reduced memory consumption: One event handler instead of potentially hundreds."
+        ],
+        "example_code": "javascript\n<ul id=\"myList\">\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ul>\n\n<script>\n  document.getElementById('myList').addEventListener('click', function(event) {\n    if (event.target && event.target.nodeName == 'LI') {\n      console.log('List item clicked:', event.target.textContent);\n      // Perform action based on the clicked list item\n    }\n  });\n</script>\n",
+        "example_explanation": "In this example, instead of attaching a click listener to each `<li>` element, we attach a single listener to the `<ul>` element. When a click occurs on an `<li>`, the event bubbles up to the `<ul>`. The event listener checks if the `event.target` (the element that triggered the event) is an `<li>`. If it is, the code executes, logging the text content of the clicked list item. This approach is much more efficient, especially if list items are frequently added or removed."
+      }
+    },
+    "timestamp": "2025-06-02T17:43:19.213Z"
   }
 ]
